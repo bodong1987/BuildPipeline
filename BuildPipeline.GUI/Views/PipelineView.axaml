@@ -1,0 +1,167 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:progRing="clr-namespace:AvaloniaProgressRing;assembly=AvaloniaProgressRing"
+			 xmlns:local="clr-namespace:BuildPipeline.GUI.Views;assembly=BuildPipeline.GUI"
+			 xmlns:localVM="clr-namespace:BuildPipeline.GUI.ViewModels;assembly=BuildPipeline.GUI"
+			 xmlns:ll="clr-namespace:BuildPipeline.GUI.Localization;assembly=BuildPipeline.GUI"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BuildPipeline.GUI.Views.PipelineView">
+	<UserControl.Styles>
+		<StyleInclude Source="avares://AvaloniaProgressRing/Styles/ProgressRing.xaml"/>
+	</UserControl.Styles>
+	<Grid RowDefinitions="Auto,*">
+		<StackPanel Orientation="Horizontal" Grid.Row="0">
+			<Button ToolTip.Tip="{ll:Localize ExecuteAllTasks}" 					
+					IsVisible="{Binding !ExecuteHandler.IsExecuting}"
+					Command="{Binding ExecuteHandler.ExecuteAllTasks}"
+					Margin="5"
+					>
+				<StackPanel Orientation="Horizontal">
+					<Image Source="{SvgImage /Assets/Images/doublenext.svg}" Width="36" Height="36"></Image>
+					<TextBlock VerticalAlignment="Center" FontSize="16" Text="{ll:Localize ExecuteAll}"></TextBlock>
+				</StackPanel>
+
+				<Button.Styles>
+					<Style>
+						<Style.Resources>
+							<SolidColorBrush x:Key="ButtonBackground">Transparent</SolidColorBrush>
+							<SolidColorBrush x:Key="ButtonBackgroundPointerOver">Gray</SolidColorBrush>
+							<SolidColorBrush x:Key="ButtonBackgroundPressed">DarkGray</SolidColorBrush>
+						</Style.Resources>
+					</Style>
+				</Button.Styles>
+			</Button>
+			<Button ToolTip.Tip="{ll:Localize ExecuteSelectedTasks}" 					
+					IsVisible="{Binding !ExecuteHandler.IsExecuting}"
+					Command="{Binding ExecuteHandler.ExecuteSelectedTasks}"
+					Margin="5"
+					>
+				<Button.Styles>
+					<Style>
+						<Style.Resources>
+							<SolidColorBrush x:Key="ButtonBackground">Transparent</SolidColorBrush>
+							<SolidColorBrush x:Key="ButtonBackgroundPointerOver">Gray</SolidColorBrush>
+							<SolidColorBrush x:Key="ButtonBackgroundPressed">DarkGray</SolidColorBrush>
+						</Style.Resources>
+					</Style>
+				</Button.Styles>
+				<StackPanel Orientation="Horizontal">
+					<Image Source="{SvgImage /Assets/Images/next.svg}" Width="36" Height="36"></Image>
+					<TextBlock VerticalAlignment="Center" FontSize="16" Text="{ll:Localize ExecuteSelected}"></TextBlock>
+				</StackPanel>
+			</Button>
+			<Button ToolTip.Tip="{ll:Localize StopAllExecutedTasks}" 
+					IsVisible="{Binding ExecuteHandler.IsExecuting}"
+					IsEnabled="{Binding !ExecuteHandler.IsStopping}"
+					Command="{Binding ExecuteHandler.StopAllTasks}"
+					Margin="5"
+					>				
+				<Button.Styles>
+					<Style>
+						<Style.Resources>
+							<SolidColorBrush x:Key="ButtonBackground">Transparent</SolidColorBrush>
+							<SolidColorBrush x:Key="ButtonBackgroundPointerOver">Gray</SolidColorBrush>
+							<SolidColorBrush x:Key="ButtonBackgroundPressed">DarkGray</SolidColorBrush>
+						</Style.Resources>
+					</Style>
+				</Button.Styles>
+				<StackPanel Orientation="Horizontal">
+					<Image Source="{SvgImage /Assets/Images/stop.svg}" Width="36" Height="36"></Image>
+					<TextBlock VerticalAlignment="Center" FontSize="16" Text="{ll:Localize Stop}"></TextBlock>
+				</StackPanel>				
+			</Button>
+		</StackPanel>
+		<Grid Grid.Row="1" ColumnDefinitions="Auto,4,*">
+			<TreeView Grid.Column="0" 
+					  ItemsSource="{Binding Nodes}" 
+					  SelectedItems="{Binding SelectedNodes}"
+					  SelectionMode="Multiple"	
+					  SelectedItem="{Binding SelectedNode}"
+					  >
+				<TreeView.ItemTemplate>
+					<TreeDataTemplate ItemsSource="{Binding Children}">
+						<StackPanel Orientation="Horizontal" Margin="4">
+							<Image IsVisible="{Binding IsNotExecuted}"
+								   Source="{SvgImage /Assets/Images/actions_question.svg}"
+								   Width="24" Height="24"
+								   HorizontalAlignment="Right"
+								   ToolTip.Tip="{Binding ExecuteResultDescription}"
+								   ></Image>
+							<Image IsVisible="{Binding IsExecuteSuccess}" 
+								   Source="{SvgImage /Assets/Images/security_security.svg}" 
+								   Width="24" Height="24" 
+								   HorizontalAlignment="Right"
+								   ToolTip.Tip="{Binding ExecuteResultDescription}"
+								   ></Image>
+							<Image IsVisible="{Binding IsExecuteFailure}"
+								   Source="{SvgImage /Assets/Images/actions_removecircled.svg}"
+								   Width="24" Height="24"
+								   HorizontalAlignment="Right"
+								   ToolTip.Tip="{Binding ExecuteResultDescription}"
+								   ></Image>
+							<Image IsVisible="{Binding IsExecuteCanceled}"
+								   Source="{SvgImage /Assets/Images/security_warningcircled2.svg}"
+								   Width="24" Height="24"
+								   HorizontalAlignment="Right"
+								   ToolTip.Tip="{Binding ExecuteResultDescription}"
+								   ></Image>
+							<progRing:ProgressRing
+								Width="24"
+								Height="24"
+								IsActive="{Binding IsExecuting}"
+								IsVisible="{Binding IsExecuting}"
+								ToolTip.Tip="Task is executing, please wait for a moment."
+								>								
+							</progRing:ProgressRing>
+							<TextBlock Margin="4" 
+									   FontSize="18" 
+									   Text="{Binding Name}" 
+									   ToolTip.Tip="{Binding TaskDescription}"
+									   VerticalAlignment="Center" 
+									   HorizontalAlignment="Left" 
+									   FontWeight="Bold"></TextBlock>
+						</StackPanel>
+					</TreeDataTemplate>
+				</TreeView.ItemTemplate>
+			</TreeView>
+			<GridSplitter Grid.Column="1"></GridSplitter>
+			<Grid Grid.Column="2" RowDefinitions="Auto, Auto, *" IsVisible="{Binding HasSelectedNode}">
+				<TextBlock Margin="5" Grid.Row="0" FontFamily="Microsoft YaHei,Simsun,苹方-简,宋体-简" FontSize="22" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding CurrentTaskDescription}"></TextBlock>
+				<Grid Grid.Row="1" ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto,*">
+					<TextBlock Margin="5" VerticalAlignment="Center" Text="{ll:Localize CommandLineArgumentsTitle}" FontSize="18" FontWeight="Bold" ></TextBlock>
+					<TextBox Margin="5" IsReadOnly="True" VerticalAlignment="Center" Grid.Column="1" Text="{Binding CurrentTaskCommandLine}" FontFamily="Microsoft YaHei,Simsun,苹方-简,宋体-简"></TextBox>
+					<ComboBox 
+						Margin="5" 
+						VerticalAlignment="Center" 
+						Grid.Column="2" 
+						ItemsSource="{x:Static localVM:CommandLineFormatMethodProvider.Methods}" 
+						SelectedItem="{Binding FormatMethod}"
+						></ComboBox>
+					<local:RequirementsView 
+						Grid.Row="1"
+						Grid.Column="0"
+						Grid.ColumnSpan="3"
+						IsVisible="{Binding HasRequirements}"
+						DataContext="{Binding Requirements}"
+						></local:RequirementsView>
+					<local:TaskOptionsView
+						Grid.Row="2"
+						Grid.Column="0"
+						Grid.ColumnSpan="3"
+						IsVisible="{Binding HasCommandLineOptions}"
+						>						
+					</local:TaskOptionsView>					
+				</Grid>
+				<TextBox Grid.Row="2"
+					 IsReadOnly="True"
+					 Text="{Binding CurrentNodeExecuteOutput}"
+					 FontFamily="Microsoft YaHei,Simsun,苹方-简,宋体-简"
+					 CaretIndex="{Binding CurrentCaret}"
+					 >
+				</TextBox>
+			</Grid>
+		</Grid>
+	</Grid>
+</UserControl>

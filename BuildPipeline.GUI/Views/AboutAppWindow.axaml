@@ -1,0 +1,47 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:lf="clr-namespace:BuildPipeline.GUI.Framework"
+		xmlns:ll="clr-namespace:BuildPipeline.GUI.Localization;assembly=BuildPipeline.GUI"
+		xmlns:lu="clr-namespace:BuildPipeline.GUI.Utils;assembly=BuildPipeline.GUI"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="250"
+        x:Class="BuildPipeline.GUI.Views.AboutAppWindow"
+        Title="{ll:Localize About}"
+		Width="600"
+		Height="250"
+		WindowStartupLocation="CenterOwner"		
+		Icon="/Assets/Icons/MainIcon.ico"
+		>	
+	<Grid RowDefinitions="Auto,Auto,Auto,*,Auto">
+		<TextBlock HorizontalAlignment="Center" 
+				   Grid.Row="0" 
+				   Margin="10" 
+				   FontSize="18" 
+				   FontStyle="Oblique"	
+				   Text ="{ll:Localize AboutAppName}"
+				   FontFamily="{x:Static lu:FontUtils.ChineseFontFamily}"
+				   >
+		</TextBlock>		
+		<Button Grid.Row="1" HorizontalAlignment="Center" Click="OnClickWebsite">
+			https://github.com/bodong1987/BuildPipeline
+		</Button>
+				   
+		<TextBlock HorizontalAlignment="Center" 
+				   Grid.Row="2"
+				   Margin="5"
+				   Text="{x:Static lf:EditorFramework.AppVersion}"
+				   >
+		</TextBlock>
+		<Image Grid.Row="3" Source="/Assets/Images/MainIcon.png"></Image>
+		<Button HorizontalAlignment="Right" 
+				Margin="5" 
+				Grid.Row="4" 
+				HorizontalContentAlignment="Center"			
+				Width="80"
+				Click="OnClose"			
+				Content="{ll:Localize OK}"
+				>
+		</Button>
+	</Grid>
+</Window>

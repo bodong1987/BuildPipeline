@@ -1,0 +1,44 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BuildPipeline.GUI.Views.TaskPropertyView"
+			 xmlns:local="clr-namespace:Avalonia.PropertyGrid.Controls;assembly=Avalonia.PropertyGrid"
+			 xmlns:ll="clr-namespace:BuildPipeline.GUI.Localization;assembly=BuildPipeline.GUI"
+			 >
+	<UserControl.Styles>
+		<Style Selector="Border.thin">
+			<Setter Property="BorderBrush" Value="Gray" />
+			<Setter Property="BorderThickness" Value="0.5" />
+			<Setter Property="CornerRadius" Value="0,0,5,5" />
+			<Setter Property="Margin" Value="0,0,0,15" />
+		</Style>
+		<Style Selector="Border.small_title">
+			<Setter Property="Background">
+				<Setter.Value>
+					<SolidColorBrush Color="Gray" Opacity="0.5" />
+				</Setter.Value>
+			</Setter>
+			<Setter Property="BorderBrush" Value="Gray" />
+			<Setter Property="BorderThickness" Value="0.5" />
+			<Setter Property="CornerRadius" Value="5,5,0,0" />
+			<Setter Property="Padding" Value="2" />
+		</Style>
+	</UserControl.Styles>
+	<Grid RowDefinitions="Auto, *">
+		<Border Classes="small_title">
+			<Grid Grid.Row="0" ColumnDefinitions="Auto, Auto, *">				
+				<TextBlock Text="{Binding TaskName}" Margin="5,0" Grid.Column="0" VerticalAlignment="Center" FontSize="18" FontWeight="Bold"></TextBlock>
+				<TextBlock Text="{Binding TaskDescription}" FontFamily="Microsoft YaHei,Simsun,苹方-简,宋体-简" Margin="10,0" Grid.Column="1" VerticalAlignment="Center" FontSize="14"></TextBlock>
+				<StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
+					<RadioButton Margin="10, 2" Content="{ll:Localize Auto}" IsChecked="{Binding IsAuto}" GroupName="{Binding TaskSettingGroup}"></RadioButton>
+					<RadioButton Margin="10, 2" Content="{ll:Localize Include}" IsChecked="{Binding IsInclude}" GroupName="{Binding TaskSettingGroup}"></RadioButton>
+					<RadioButton Margin="10, 2" Content="{ll:Localize Exclude}" IsChecked="{Binding IsExclude}" GroupName="{Binding TaskSettingGroup}"></RadioButton>
+				</StackPanel>
+			</Grid>
+		</Border>
+		<local:PropertyGrid Grid.Row="1" SelectedObject="{Binding Settings.Options}" AllowFilter="False" AllowQuickFilter="False">
+		</local:PropertyGrid>
+	</Grid>
+</UserControl>

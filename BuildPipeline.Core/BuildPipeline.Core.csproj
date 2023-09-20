@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+      <LangVersion>preview</LangVersion>
+      <BaseOutputPath>../Publish</BaseOutputPath>
+      <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+      <Nullable>disable</Nullable>
+      <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+      <PackageId>bodong.$(AssemblyName)</PackageId>
+      <Title>bodong.$(AssemblyName)</Title>
+      <Authors>bodong</Authors>
+      <Product>bodong.$(AssemblyName)</Product>
+      <Description>This is an archive task system framework provided for developers, which allows you to implement archive management of complex projects very conveniently, and provides corresponding GUI tools to facilitate you to deploy archive environments in various environments.</Description>
+      <PackageProjectUrl>https://github.com/bodong1987/BuildPipeline</PackageProjectUrl>
+      <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
+      <RepositoryUrl>https://github.com/bodong1987/BuildPipeline.git</RepositoryUrl>
+      <RepositoryType>git</RepositoryType>
+      <PackageTags>Build;BuildPipeline;Avalonia;bodong</PackageTags>
+	  <Version>1.0.0.2</Version>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="BuilderFramework\Scriptable\" />
+    <Folder Include="CommandLine\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="bodong.PropertyModels" Version="11.0.4.1" />
+    <PackageReference Include="plist-cil" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ReadMe.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

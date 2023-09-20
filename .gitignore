@@ -1,0 +1,13 @@
+/Publish/Debug
+**/.vs
+/.vscode
+**/obj
+**/logs/
+**/bin/
+/ExampleProjects/**/x64
+/ExampleProjects/**/Debug
+/ExampleProjects/**/Release
+*.user
+**/launchSettings.json
+*.nupkg
+*.pyc

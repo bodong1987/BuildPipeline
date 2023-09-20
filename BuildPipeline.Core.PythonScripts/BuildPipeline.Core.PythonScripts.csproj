@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+      <LangVersion>preview</LangVersion>
+      <BaseOutputPath>../Publish</BaseOutputPath>
+      <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+      <Nullable>disable</Nullable>
+      <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+      <PackageId>bodong.$(AssemblyName)</PackageId>
+      <Title>bodong.$(AssemblyName)</Title>
+      <Authors>bodong</Authors>
+      <Product>bodong.$(AssemblyName)</Product>
+      <Description>This is a plug-in for the BuildPipeline.Core project, used to provide python script support for the output task pipeline.</Description>
+      <PackageProjectUrl>https://github.com/bodong1987/BuildPipeline</PackageProjectUrl>
+      <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
+      <RepositoryUrl>https://github.com/bodong1987/BuildPipeline.git</RepositoryUrl>
+      <RepositoryType>git</RepositoryType>
+      <PackageTags>Build;BuildPipeline;Avalonia;bodong;python</PackageTags>
+	  <Version>1.0.0.2</Version>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="ReadMe.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BuildPipeline.Core\BuildPipeline.Core.csproj" />
+      <PackageReference Include="IronPython" Version="3.4.1" />
+      <PackageReference Include="DynamicLanguageRuntime" Version="1.3.4" />
+  </ItemGroup>
+
+</Project>

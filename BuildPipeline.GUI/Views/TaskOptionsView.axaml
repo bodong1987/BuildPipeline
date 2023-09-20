@@ -1,0 +1,27 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:lc="clr-namespace:Avalonia.PropertyGrid.Controls;assembly=Avalonia.PropertyGrid"
+			 xmlns:ll="clr-namespace:BuildPipeline.GUI.Localization;assembly=BuildPipeline.GUI"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BuildPipeline.GUI.Views.TaskOptionsView">
+	<UserControl.Styles >
+		<Style Selector="Border.thin">
+			<Setter Property="BorderBrush" Value="Gray" />
+			<Setter Property="BorderThickness" Value="0.5" />
+			<Setter Property="CornerRadius" Value="0,0,5,5" />
+			<Setter Property="Margin" Value="0,0,0,0" />
+		</Style>
+	</UserControl.Styles>
+	<Expander ExpandDirection="Down"
+			  IsExpanded="{Binding IsOptionVisible}"
+			  VerticalAlignment="Stretch"
+			  HorizontalAlignment="Stretch"
+			  >
+		<Expander.Header>
+			<TextBlock FontSize="16" FontWeight="Bold" Text="{ll:Localize TaskOptions}"></TextBlock>
+		</Expander.Header>
+		<lc:PropertyGrid SelectedObject="{Binding Options}" AllowQuickFilter="False" AllowFilter="False"></lc:PropertyGrid>
+	</Expander>
+</UserControl>

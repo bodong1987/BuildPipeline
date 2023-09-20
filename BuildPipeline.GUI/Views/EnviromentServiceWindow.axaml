@@ -1,0 +1,60 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:progRing="clr-namespace:AvaloniaProgressRing;assembly=AvaloniaProgressRing"
+		xmlns:ll="clr-namespace:BuildPipeline.GUI.Localization;assembly=BuildPipeline.GUI"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="BuildPipeline.GUI.Views.EnviromentServiceWindow"
+        Title="{ll:Localize CheckEnvironments}"
+		WindowStartupLocation="CenterOwner"
+		Width="1000" 
+		Height="500"
+		Icon="/Assets/Icons/MainIcon.ico"
+		>
+    <Window.Styles>
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Simple.xaml"/>
+		<StyleInclude Source="avares://AvaloniaProgressRing/Styles/ProgressRing.xaml"/>
+	</Window.Styles>
+	<Grid RowDefinitions="*, Auto">
+		<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="10">
+			<DataGrid Name="dataGrid_Environments" ItemsSource="{Binding Environments}">
+				<DataGrid.Columns>
+					<DataGridTemplateColumn Header="{ll:Localize State}">
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate >
+								<StackPanel Orientation="Horizontal">
+									<Image Width="28" Height="28" IsVisible="{Binding IsAvailable}" Source="{SvgImage /Assets/Images/bo_validation.svg}" ToolTip.Tip="{ll:Localize ServiceAvailable}"></Image>
+									<Image Width="28" Height="28" IsVisible="{Binding IsUnAvailable}" Source="{SvgImage /Assets/Images/security_warningcircled.svg}" ToolTip.Tip="{ll:Localize ServiceUnavailable}"></Image>
+									<progRing:ProgressRing
+										Width="24"
+										Height="24"
+										IsActive="{Binding IsChecking}"
+										IsVisible="{Binding IsChecking}"
+										ToolTip.Tip="{ll:Localize ServiceChecking}"
+									>
+									</progRing:ProgressRing>
+								</StackPanel>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<DataGridTextColumn Header="{ll:Localize Name}" Binding="{Binding ServiceName}"></DataGridTextColumn>
+					<DataGridTextColumn Header="{ll:Localize Installation}" Binding="{Binding InstallationDirectory}"></DataGridTextColumn>					
+					<DataGridTextColumn Header="{ll:Localize Version}" Binding="{Binding Version}"></DataGridTextColumn>
+					<DataGridTextColumn Header="{ll:Localize Help}" Binding="{Binding HelpText}" Width="*" ></DataGridTextColumn>					
+				</DataGrid.Columns>
+			</DataGrid>
+		</ScrollViewer>
+		<StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
+			<Button Margin="5"
+					MinWidth="80"
+					MinHeight="35"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"	
+					Click="OnOK"
+					Content="{ll:Localize OK}"
+					></Button>
+		</StackPanel>
+	</Grid>
+</Window>

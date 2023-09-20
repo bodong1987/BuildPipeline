@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildPipeline.Core", "BuildPipeline.Core\BuildPipeline.Core.csproj", "{89A93C60-A257-4590-B966-AA2CF9104C7B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildPipeline.Proc", "BuildPipeline.Proc\BuildPipeline.Proc.csproj", "{56691930-9557-41DD-9CA8-4A7C85068421}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildPipeline.GUI", "BuildPipeline.GUI\BuildPipeline.GUI.csproj", "{91F5BAD8-9DF7-49E7-812C-041CECA8FBC1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildPipeline.GUI.Desktop", "BuildPipeline.GUI.Desktop\BuildPipeline.GUI.Desktop.csproj", "{D492A7E3-0D46-4530-9E92-DC9528B60CF6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{F346364F-5DBD-4E58-A67B-34A1B99D46E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{1A2B4D85-0EDD-4BA4-9CDB-758D7821708F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExamplePlugins", "ExamplePlugins", "{26C50D0B-F09E-4700-A9FC-0070D1770F1C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildPipeline.Plugins.Unreal", "Plugins\BuildPipeline.Plugins.Unreal\BuildPipeline.Plugins.Unreal.csproj", "{6997CBF0-92E0-4044-9389-F84CFEAD1873}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildPipeline.Core.PythonScripts", "BuildPipeline.Core.PythonScripts\BuildPipeline.Core.PythonScripts.csproj", "{8FD58060-2D86-4D45-BDD3-8C0CD95D9CCC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildPipeline.Plugins.CPPExample", "Plugins\BuildPipeline.Plugins.CPPExample\BuildPipeline.Plugins.CPPExample.csproj", "{8386FE48-DB01-4959-BE7E-DFA5E6C57B1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildPipeline.Plugins.PythonTests", "Plugins\BuildPipeline.Plugins.PythonTests\BuildPipeline.Plugins.PythonTests.csproj", "{45D46AAB-DDC0-4525-B2D3-69967B99A95A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89A93C60-A257-4590-B966-AA2CF9104C7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89A93C60-A257-4590-B966-AA2CF9104C7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89A93C60-A257-4590-B966-AA2CF9104C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89A93C60-A257-4590-B966-AA2CF9104C7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56691930-9557-41DD-9CA8-4A7C85068421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56691930-9557-41DD-9CA8-4A7C85068421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56691930-9557-41DD-9CA8-4A7C85068421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56691930-9557-41DD-9CA8-4A7C85068421}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91F5BAD8-9DF7-49E7-812C-041CECA8FBC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91F5BAD8-9DF7-49E7-812C-041CECA8FBC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91F5BAD8-9DF7-49E7-812C-041CECA8FBC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91F5BAD8-9DF7-49E7-812C-041CECA8FBC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D492A7E3-0D46-4530-9E92-DC9528B60CF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D492A7E3-0D46-4530-9E92-DC9528B60CF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D492A7E3-0D46-4530-9E92-DC9528B60CF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D492A7E3-0D46-4530-9E92-DC9528B60CF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6997CBF0-92E0-4044-9389-F84CFEAD1873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6997CBF0-92E0-4044-9389-F84CFEAD1873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6997CBF0-92E0-4044-9389-F84CFEAD1873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6997CBF0-92E0-4044-9389-F84CFEAD1873}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FD58060-2D86-4D45-BDD3-8C0CD95D9CCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FD58060-2D86-4D45-BDD3-8C0CD95D9CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FD58060-2D86-4D45-BDD3-8C0CD95D9CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FD58060-2D86-4D45-BDD3-8C0CD95D9CCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8386FE48-DB01-4959-BE7E-DFA5E6C57B1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8386FE48-DB01-4959-BE7E-DFA5E6C57B1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8386FE48-DB01-4959-BE7E-DFA5E6C57B1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8386FE48-DB01-4959-BE7E-DFA5E6C57B1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45D46AAB-DDC0-4525-B2D3-69967B99A95A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45D46AAB-DDC0-4525-B2D3-69967B99A95A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45D46AAB-DDC0-4525-B2D3-69967B99A95A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45D46AAB-DDC0-4525-B2D3-69967B99A95A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{89A93C60-A257-4590-B966-AA2CF9104C7B} = {F346364F-5DBD-4E58-A67B-34A1B99D46E0}
+		{56691930-9557-41DD-9CA8-4A7C85068421} = {1A2B4D85-0EDD-4BA4-9CDB-758D7821708F}
+		{91F5BAD8-9DF7-49E7-812C-041CECA8FBC1} = {F346364F-5DBD-4E58-A67B-34A1B99D46E0}
+		{D492A7E3-0D46-4530-9E92-DC9528B60CF6} = {1A2B4D85-0EDD-4BA4-9CDB-758D7821708F}
+		{6997CBF0-92E0-4044-9389-F84CFEAD1873} = {26C50D0B-F09E-4700-A9FC-0070D1770F1C}
+		{8FD58060-2D86-4D45-BDD3-8C0CD95D9CCC} = {F346364F-5DBD-4E58-A67B-34A1B99D46E0}
+		{8386FE48-DB01-4959-BE7E-DFA5E6C57B1B} = {26C50D0B-F09E-4700-A9FC-0070D1770F1C}
+		{45D46AAB-DDC0-4525-B2D3-69967B99A95A} = {26C50D0B-F09E-4700-A9FC-0070D1770F1C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {319ED921-3745-4D92-95D7-562A3EE578BF}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+      <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+        <Exec Command="python $(SolutionDir).\Scripts\post_build.py --outputType=$(OutputType) --targetDir=$(TargetDir) --projectDir=$(ProjectDir) --projectName=$(ProjectName) --configurationName=$(ConfigurationName)" Condition="$([MSBuild]::IsOSPlatform('Windows'))" />
+        <Exec Command="python3 $(SolutionDir).\Scripts\post_build.py --outputType=$(OutputType) --targetDir=$(TargetDir) --projectDir=$(ProjectDir) --projectName=$(ProjectName) --configurationName=$(ConfigurationName)" Condition="$([MSBuild]::IsOSPlatform('MacOS'))" />
+    </Target>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\BuildPipeline.Core\BuildPipeline.Core.csproj" />
+    </ItemGroup>
+</Project>

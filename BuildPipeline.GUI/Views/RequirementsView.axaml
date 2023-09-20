@@ -1,0 +1,39 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:ll="clr-namespace:BuildPipeline.GUI.Localization;assembly=BuildPipeline.GUI"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BuildPipeline.GUI.Views.RequirementsView">
+	<UserControl.Styles >
+		<Style Selector="Border.thin">
+			<Setter Property="BorderBrush" Value="Gray" />
+			<Setter Property="BorderThickness" Value="0.5" />
+			<Setter Property="CornerRadius" Value="0,0,5,5" />
+			<Setter Property="Margin" Value="0,0,0,0" />
+		</Style>
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Simple.xaml" />
+	</UserControl.Styles>
+	<Expander ExpandDirection="Down"
+			  VerticalAlignment="Stretch"
+			  HorizontalAlignment="Stretch"
+			  IsExpanded="{Binding IsDetailVisible}"
+			  >
+		<Expander.Header>
+			<TextBlock FontSize="16" FontWeight="Bold" Text="{Binding Title}"></TextBlock>
+		</Expander.Header>
+		
+		<DataGrid Name="dataGrid_Requirements" ItemsSource="{Binding Requirements}">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="{ll:Localize Name}" Binding="{Binding Requirement.Name}" FontFamily="Simsun" FontSize="16"></DataGridTextColumn>
+				<DataGridTextColumn Header="{ll:Localize State}" IsReadOnly="True" Binding="{Binding State}" FontFamily="Simsun" FontSize="16"></DataGridTextColumn>
+				<DataGridTextColumn Header="{ll:Localize ActivePlatform}" Binding="{Binding Platform}" FontFamily="Simsun" FontSize="16"></DataGridTextColumn>
+				<DataGridTextColumn Header="{ll:Localize Requirements}"
+									Binding="{Binding Requirement.RequirementDescription}"
+									FontFamily="Simsun" FontSize="16"
+										></DataGridTextColumn>
+			</DataGrid.Columns>
+		</DataGrid>
+	</Expander>
+</UserControl>
