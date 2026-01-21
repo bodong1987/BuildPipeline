@@ -161,7 +161,7 @@ namespace BuildPipeline.Plugins.CPPExample
             }
             else
             {
-                vsInstallation = vsService.Installations.Reverse().ToList().Find(x => x.VSType == options.VSType);
+                vsInstallation = Enumerable.Reverse(vsService.Installations).ToList().Find(x => x.VSType == options.VSType);
             }
 
             if (vsInstallation == null)
