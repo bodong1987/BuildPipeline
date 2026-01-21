@@ -213,7 +213,7 @@ namespace BuildPipeline.Core.Services.EnvironmentServices
             string text = ExternalProcessUtils.InvokeAndGetOutput(path, " /version");
 
             var lines = text.Split('\n');
-            foreach (var i in lines.Reverse())
+            foreach (var i in Enumerable.Reverse(lines))
             {
                 if (Version.TryParse(i.Trim(), out var v))
                 {

@@ -11,3 +11,4 @@
 **/launchSettings.json
 *.nupkg
 *.pyc
+/.idea

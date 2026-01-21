@@ -161,7 +161,7 @@ namespace BuildPipeline.Core.Utils
 
             if (!TemporaryConfiguration)
             {
-                foreach (var i in AppFramework.ConfigurationDirectories.Reverse())
+                foreach (var i in Enumerable.Reverse(AppFramework.ConfigurationDirectories))
                 {
                     string TestPath = Path.Combine(i, ConfigPath);
 
